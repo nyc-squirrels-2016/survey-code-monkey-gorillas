@@ -1,11 +1,11 @@
-<h1>Add questions for survey: <%= @survey.name%></h1>
+<div id="question-container">
+  <h1>Add questions for survey: <%= @survey.name%></h1>
+  <h3>Question:</h3>
+  <form id="question-submit" action="/survey/<%= @survey.id %>/question" method="POST">
+    <input type="text" name="question" placeholder="Question">
+    <input type="submit">
+  </form>
 
-<h3>Question:</h3>
-<form action="/survey/<%= @survey.id %>/question" method="POST">
-  <input type="text" name="question" placeholder="Question">
-  <input type="submit">
-</form>
-
-<a href="/">Done with Survey</a>
-
+  <a href="/">Done with Survey</a>
+</div>
 

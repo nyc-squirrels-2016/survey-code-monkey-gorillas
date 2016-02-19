@@ -1,14 +1,13 @@
-<h1><%= @survey.name%></h1>
+<h1>Survey Name: <%= @survey.name%></h1>
 <h1>Question: <%= @question.content%></h1>
-
-
-
-
 <form action="/survey/<%=@survey.id%>/question/<%=@question.id%>/answer" method="POST">
-
-<p>
-  <input type="text" name="answer[1]" placeholder="enter response">
-    <a href="#">Remove</a>
-</p>
+  <div id="answer-container">
+    <p>
+      <input type="text" name="answer[1]" placeholder="enter response">
+      <a class= "delete-button">Remove</a>
+    </p>
+  </div>
   <input type="submit" value="Submit the responses">
 </form>
+<button class="add">add</button>
+

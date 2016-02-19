@@ -2,15 +2,18 @@ get '/survey/new' do
   erb :survey_new
 end
 
+
 post '/survey' do
   @survey = Survey.new(name: params[:survey_name])
-  if @survey.save
-    redirect "/survey/#{@survey.id}/question/new"
-  else
-    @errors=["You need to put in a survey name"]
-    # erb :'error partial'
-  end
+    if @survey.save
+      erb :"/question_new", layout: false
+      # redirect "/survey/#{@survey.id}/question/new"
+    else
+      @errors=["You need to put in a survey name"]
+      # erb :'error partial'
+    end
 end
+
 
 get '/survey/:survey_id/question/new' do
   @survey = Survey.find(params[:survey_id])
@@ -36,10 +39,12 @@ get '/survey/:survey_id/question/:question_id/answer/new' do
   erb :answer_new
 end
 
+
 post '/survey/:survey_id/question/:question_id/answer' do
   @survey = Survey.find(params[:survey_id])
-  @answer = Answer.new(content: params[:answer], question_id: params[:question_id])
-  if @answer.save
-    redirect "/survey/#{@survey.id}/question/new"
+  params[:answer].each_value do |banana|
+    Answer.create(content: banana, question_id: params[:question_id])
   end
+    redirect "/survey/#{@survey.id}/question/new"
 end
+
