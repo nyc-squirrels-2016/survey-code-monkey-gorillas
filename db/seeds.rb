@@ -1,0 +1,13 @@
+require 'faker'
+
+20.times{User.create(username: Faker::Internet.user_name, password_digest: "a")}
+
+20.times{|i| Survey.create(name: Faker::Hacker.noun, user_id: i)}
+
+20.times{|i| Question.create(content: Faker::Lorem.sentence(2, false), survey_id: i)}
+
+20.times do |i|
+  2.times{|c| Answer.create(content: Faker::Lorem.sentence(2, false), question_id: i  )}
+end
+
+20.times{|i| UserAnswer.create(user_id: i, answer_id: i )}
