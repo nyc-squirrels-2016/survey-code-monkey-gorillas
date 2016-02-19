@@ -9,11 +9,12 @@ gem 'sinatra-contrib'
 
 gem 'activesupport'
 gem 'activerecord'
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 
 gem 'rake'
 
 gem 'shotgun'
+
 
 group :test do
   gem 'database_cleaner', '~> 1.4.1'
@@ -24,6 +25,7 @@ group :test do
 end
 
 group :test, :development do
+  gem 'pry'
   gem 'factory_girl'
   gem 'faker'
 end
