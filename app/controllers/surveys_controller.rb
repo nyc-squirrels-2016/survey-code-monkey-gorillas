@@ -13,3 +13,10 @@ get '/surveys/:survey_id/results' do
     redirect "/surveys/#{@survey.id}"
   end
 end
+
+post '/surveys/:survey_id' do
+  params[:input].each_value do |answer|
+    UserAnswer.create(user_id: current_user.id, answer_id: answer)
+  end
+  redirect '/surveys/params[:survey_id]'
+end
