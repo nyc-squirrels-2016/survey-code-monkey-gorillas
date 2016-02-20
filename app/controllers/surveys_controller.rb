@@ -1,10 +1,14 @@
 get '/surveys/:survey_id' do
   @survey = Survey.find(params[:survey_id])
-  if @survey.user_answers.any?{|user_answer| user_answer.user_id == current_user.id}
-    erb :'/taken-already'
+  if logged_in?
+    if @survey.user_answers.any?{|user_answer| user_answer.user_id == current_user.id}
+      erb :'/taken-already'
+    else
+      @questions = @survey.questions
+      erb :'surveys/show'
+    end
   else
-    @questions = @survey.questions
-    erb :'surveys/show'
+    erb :'/taken-already'
   end
 end
 
