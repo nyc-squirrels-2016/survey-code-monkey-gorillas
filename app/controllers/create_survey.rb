@@ -4,7 +4,7 @@ end
 
 
 post '/surveys' do
-  @survey = Survey.new(name: params[:survey_name])
+  @survey = Survey.new(name: params[:survey_name], user_id: current_user.id)
     if @survey.save
       erb :"/question_new", layout: false
       # redirect "/survey/#{@survey.id}/question/new"

@@ -20,6 +20,7 @@
 <body>
   <%if logged_in?%>
     Logged in as <a href='/users/<%=current_user.id%>'> <%=current_user.username%></a>
+    <a href='/surveys/new'>Create a New Survey</a>
     <a href="/logout">Logout</a>
   <%else%>
     <a href="/signup">Sign up</a>
