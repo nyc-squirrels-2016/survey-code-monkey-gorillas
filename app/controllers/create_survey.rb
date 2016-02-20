@@ -43,7 +43,10 @@ end
 post '/surveys/:survey_id/questions/:question_id/answers' do
   @survey = Survey.find(params[:survey_id])
   params[:answer].each_value do |banana|
-    Answer.create(content: banana, question_id: params[:question_id])
+    answer = Answer.new(content: banana, question_id: params[:question_id])
+    if !answer.save
+      @errors=["Put in an answer"]
+    end
   end
     redirect "/surveys/#{@survey.id}/questions/new"
 end

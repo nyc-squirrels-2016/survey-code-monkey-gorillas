@@ -65,3 +65,10 @@ code {
     margin-left: -1em;
     overflow: auto;
 }
+
+
+
+li
+{
+    list-style-type: none;
+}
