@@ -33,6 +33,18 @@ $(document).ready(function() {
     $(e.target).parent().remove();
   });
 
+  // $('.survey-key').on('click', function(e){
+  //   e.preventDefault();
+  //   var survey_id = $(this).data("survey-id");
+  //   var request = $.post("/surveys/"+survey_id.toString()+"/tokens")
+    //   request.done(function(data){
+    //     debugger
+    //     var content = $(data).find
+    //     $('.key').html('success')
+    // });
+
+  });
+
 // Stuff above is working
 
   var counter = 2
