@@ -43,7 +43,7 @@ $(document).ready(function() {
     //     $('.key').html('success')
     // });
 
-  });
+  // });
 
 // Stuff above is working
 
