@@ -1,6 +1,6 @@
 <h1>Survey Name: <%= @survey.name%></h1>
 <h1>Question: <%= @question.content%></h1>
-<form action="/survey/<%=@survey.id%>/question/<%=@question.id%>/answer" method="POST">
+<form action="/surveys/<%=@survey.id%>/questions/<%=@question.id%>/answers" method="POST">
   <div id="answer-container">
     <p>
       <input type="text" name="answer[1]" placeholder="enter response">
