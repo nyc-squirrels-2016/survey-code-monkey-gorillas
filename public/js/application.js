@@ -33,6 +33,22 @@ $(document).ready(function() {
     $(e.target).parent().remove();
   });
 
+  $('.survey-key').click(function(event) {
+    event.preventDefault();
+    var request = $.ajax({
+      type: "POST",
+      url: $(this).attr("href"),
+      data: $(this).attr("survey-id")
+    });
+
+    request.done(function(response) {
+
+    })
+
+    })
+
+  })
+
   // $('.survey-key').on('click', function(e){
   //   e.preventDefault();
   //   var survey_id = $(this).data("survey-id");
