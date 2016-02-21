@@ -33,6 +33,23 @@ $(document).ready(function() {
     $(e.target).parent().remove();
   });
 
+  $('.survey-key').click(function(event) {
+    event.preventDefault();
+    generateButton = this;
+    var request = $.ajax({
+      type: "POST",
+      url: $(this).attr("href"),
+      data: $(this).attr("survey-id")
+    });
+
+    request.done(function(response) {
+      $(generateButton).siblings(".key").text(response);
+    })
+
+  })
+
+  })
+
   // $('.survey-key').on('click', function(e){
   //   e.preventDefault();
   //   var survey_id = $(this).data("survey-id");
@@ -53,31 +70,3 @@ $(document).ready(function() {
     $("#answer-container").append("<p><input type='text' name='answer["+ counter +"]' placeholder='enter response'><a class= 'delete-button'>Remove</a></p>")
     counter++
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
