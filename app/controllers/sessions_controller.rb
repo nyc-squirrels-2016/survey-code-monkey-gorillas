@@ -8,8 +8,7 @@ post '/login' do
     session[:user_id] = user.id
     redirect '/'
   else
-    @errors = user.errors.full_messages
-    @errors << 'Wrong username or password'
+    @errors = ['Wrong username or password.']
     erb :'sessions/login'
   end
 end
