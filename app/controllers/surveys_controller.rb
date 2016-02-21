@@ -12,6 +12,12 @@
 #   end
 # end
 
+get '/surveys/:survey_id' do
+
+  erb :'surveys/no_invite'
+
+end
+
 get '/surveys/:survey_id/tokens' do
   @survey = Survey.find(params[:survey_id])
   @tokens = @survey.tokens
@@ -23,13 +29,12 @@ get '/surveys/:survey_id/tokens' do
 end
 
 post '/surveys/:survey_id/tokens' do
-  @survey = Survey.find(params[:survey_id])
-  if logged_in? && @survey.user_id == current_user.id
-    token = Token.create(survey_id: @survey.id)
-    @tokens = @survey.tokens
-    redirect "/surveys/#{@survey.id}/tokens"
+  survey = Survey.find(params[:survey_id])
+  if logged_in? && survey.user_id == current_user.id
+    token = Token.create(survey_id: survey.id)
+    return "http://localhost:9393/surveys/#{survey.id}/#{token.url}"
   end
-    redirect "/users/#{@survey.user_id}"
+    # redirect "/users/#{@survey.user_id}"
 end
 
 get '/surveys/:survey_id/results' do
@@ -61,8 +66,13 @@ post '/surveys/:survey_id/:key' do
   survey = Survey.find(params[:survey_id])
   token = Token.find_by(url: url, survey_id: params[:survey_id])
   if token
+    user_id = if logged_in?
+                current_user.id
+              else
+                0
+              end
     params[:input].each_value do |answer|
-      UserAnswer.create(user_id: current_user.id, answer_id: answer)
+      UserAnswer.create(user_id: user_id, answer_id: answer)
     end
     token.destroy
     erb :"/surveys/thankyou"

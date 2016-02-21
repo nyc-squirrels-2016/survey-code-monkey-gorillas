@@ -6,14 +6,11 @@
 <li class='survey'><a href='/surveys/<%=survey.id%>'><%=survey.name%></a>
   <% if logged_in? && survey.user_id == current_user.id %>
     <a href = '/surveys/<%=survey.id%>/results'>Results</a>
-    <br><a class='survey-key' survey-id='<%=survey.id%>' href='/surveys/<%=survey.id%>/tokens'>See your survey keys</a>
+    <br><a survey-id='<%=survey.id%>' href='/surveys/<%=survey.id%>/tokens'>See all your survey invites</a>
     <br>
-    <form method="POST" action="/surveys/<%=survey.id%>/tokens">
-      <input type="submit" value="Generate a survey key">
+    <a class="survey-key" survey-id="<%=survey.id%>" href="/surveys/<%=survey.id%>/tokens">Generate a new survey invite</a>
     </form>
-
-
-    <!-- <span class='key'></span> -->
+    <span class='key'></span>
   </li>
   <% end %>
 <%end%>

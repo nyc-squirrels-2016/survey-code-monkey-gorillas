@@ -35,6 +35,7 @@ $(document).ready(function() {
 
   $('.survey-key').click(function(event) {
     event.preventDefault();
+    generateButton = this;
     var request = $.ajax({
       type: "POST",
       url: $(this).attr("href"),
@@ -42,10 +43,10 @@ $(document).ready(function() {
     });
 
     request.done(function(response) {
-
+      $(generateButton).siblings(".key").text(response);
     })
 
-    })
+  })
 
   })
 
@@ -69,31 +70,3 @@ $(document).ready(function() {
     $("#answer-container").append("<p><input type='text' name='answer["+ counter +"]' placeholder='enter response'><a class= 'delete-button'>Remove</a></p>")
     counter++
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
