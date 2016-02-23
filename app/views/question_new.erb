@@ -1,0 +1,10 @@
+<div id="question-container">
+  <h1>Add questions for survey: <%= @survey.name%></h1>
+  <h3>Question:</h3>
+  <form id="question-submit" action="/surveys/<%= @survey.id %>/questions" method="POST">
+    <input type="text" name="question" placeholder="Question">
+    <input type="submit">
+  </form>
+
+ <a href="/"> <button>Done with Survey</button></a>
+</div>

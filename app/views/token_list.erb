@@ -1,0 +1,6 @@
+<h3>These are your tokens for this survey</h3>
+<ul>
+<%@tokens.each do |token|%>
+	<li class='token-url'><a href="http://localhost:9393/surveys/<%=@survey.id%>/<%= token.url%>">http://localhost:9393/surveys/<%=@survey.id%>/<%=token.url%></a></li>
+<%end%>
+</ul>

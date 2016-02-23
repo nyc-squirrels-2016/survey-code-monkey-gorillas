@@ -1,0 +1,23 @@
+<h1>Profile for: <%=@user.username%></h1>
+<h2>Surveys created by <%=@user.username%></h2>
+<%@user.surveys.each do |survey|%>
+<!-- if @user.id == current_user[:user_id] show results page
+  ' -->
+<li class='survey'><a href='/surveys/<%=survey.id%>'><%=survey.name%></a>
+  <% if logged_in? && survey.user_id == current_user.id %>
+    <a href = '/surveys/<%=survey.id%>/results'>Results</a>
+    <br><a survey-id='<%=survey.id%>' href='/surveys/<%=survey.id%>/tokens'>See all your survey invites</a>
+    <br>
+    <a class="survey-key" survey-id="<%=survey.id%>" href="/surveys/<%=survey.id%>/tokens">Generate a new survey invite</a>
+    </form>
+    <span class='key'></span>
+  </li>
+  <% end %>
+<%end%>
+<h2>Surveys taken:</h2>
+  <p>
+    <% @user.user_answers.map{|user_answer| user_answer.answer.question.survey}.uniq.each do |survey| %>
+     <li><a href='/surveys/<%=survey.id%>'><%= survey.name %></a></li>
+    <% end %>
+
+  </p>
