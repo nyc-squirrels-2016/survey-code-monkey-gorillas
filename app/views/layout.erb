@@ -18,14 +18,13 @@
   <title>survey code monkeys</title>
 </head>
 <body>
-  <%if logged_in?%>
-    Logged in as <a href='/users/<%=current_user.id%>'> <%=current_user.username%></a>
-    <a href='/surveys/new'>Create a New Survey</a>
-    <a href="/logout">Logout</a>
-  <%else%>
-    <a href="/signup">Sign up</a>
-    <a href="/login">Login</a>
-  <%end%>
+  <header>
+    <%if logged_in?%>
+      <%= erb :"/partials/_logged_in_banner" %>
+    <%else%>
+      <%= erb :"/partials/_anon" %>
+    <%end%>
+  </header>
   <h1><a href='/'>survey code monkeys.</a></h1>
 <div id="content">
   <%= yield %>

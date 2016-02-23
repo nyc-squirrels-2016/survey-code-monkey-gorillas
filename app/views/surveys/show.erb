@@ -1,7 +1,7 @@
 <h2><%=@survey.name%></h2>
 
 
-<form method="POST" action="/surveys/<%=@survey.id%>/<%=@url%>">
+<form method="POST" action="<%=@route%>">
   <%@questions.each do |question|%>
     <%=question.content%>
     <br>
